@@ -1,7 +1,7 @@
 {
-  "name": "PLUGIN",
+  "name": "alpinejs-number",
   "version": "1.0.0",
-  "description": "DESCRIPTION",
+  "description": "A better number input for Alpine JS",
   "keywords": [
     "Alpine",
     "Alpine JS",
