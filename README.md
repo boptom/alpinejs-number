@@ -1,45 +1,19 @@
-**--- DELETE START ---**
+# Alpine JS Number
 
-# Alpine JS Plugin Template
+An Alpine JS plugin/directive to format numbers in input fields.
 
-This is a template repository to help developers quickly build Alpine JS
-plugins.
+With a Package Manager
+yarn add -D alpinejs-number
+
+npm install -D alpinejs-number
+import Alpine from 'alpinejs'
+import manage from 'alpinejs-number'
+
+Alpine.plugin(number)
+
+Alpine.start()
 
 ## How to Use
-
-1. Clone the repository with the "Use this template" button on GitHub
-2. Run `npm install` to install ES Build
-3. Build your plugin
-
-### Compiling
-
-To compile the code you run `npm run build` which will create two files in the
-`/dist` directory.
-
-### Testing
-
-In this template you will find a `index.html` file that you can use for testing
-how the Alpine JS plugin works.
-
-I recommend using [vercel/serve](https://www.npmjs.com/package/serve) to serve
-this file.
-
-## Things to Change
-
-- Find and replace "PLUGIN" with the name of your plugin
-- Find and replace "FILE" with the name of your compiled file
-- Find and replace "DESCRIPTION" with a description of your plugin
-- Uncomment "index.html" in the `.gitignore` file
-
-🚨 Make sure find and replace is case sensitive
-
-If you were creating a plugin called "Alpine JS CSV" you could do the following:
-
-- "PLUGIN" to "alpinejs-csv"
-- "FILE" to "csv"
-- "DESCRIPTION" to "Transform data into a CSV with Alpine JS 📈"
-
----
 
 ### License
 
@@ -73,12 +47,12 @@ npm install -D PLUGIN
 ```
 
 ```js
-import Alpine from 'alpinejs'
-import FILE from 'PLUGIN'
+import Alpine from "alpinejs";
+import FILE from "PLUGIN";
 
-Alpine.plugin(FILE)
+Alpine.plugin(FILE);
 
-Alpine.start()
+Alpine.start();
 ```
 
 ## Example

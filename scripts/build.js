@@ -1,19 +1,19 @@
 buildPlugin({
-  entryPoints: ['builds/cdn.js'],
-  outfile: 'dist/FILE.min.js',
-})
+  entryPoints: ["builds/cdn.js"],
+  outfile: "dist/number.min.js",
+});
 
 buildPlugin({
-  entryPoints: ['builds/module.js'],
-  outfile: 'dist/FILE.esm.js',
-  platform: 'neutral',
-  mainFields: ['main', 'module'],
-})
+  entryPoints: ["builds/module.js"],
+  outfile: "dist/number.esm.js",
+  platform: "neutral",
+  mainFields: ["main", "module"],
+});
 
 function buildPlugin(buildOptions) {
-  return require('esbuild').buildSync({
+  return require("esbuild").buildSync({
     ...buildOptions,
     minify: true,
     bundle: true,
-  })
+  });
 }

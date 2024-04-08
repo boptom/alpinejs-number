@@ -8,7 +8,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <script defer src="./dist/FILE.min.js"></script>
+    <script defer src="./dist/number.min.js"></script>
 
     <script
       defer
@@ -16,5 +16,181 @@
     ></script>
   </head>
 
-  <body> </body>
+  <body class="p-4 md:p-12 flex flex-col items-center">
+    <div class="max-w-3xl">
+        <div class="flex justify-between">
+          <!-- Logo -->
+          <div class="h-12 w-12 bg-gray-100 rounded-lg flex justify-center items-end p-3 text-5xl font-black shadow-md mb-4 border border-gray-600">,.</div>
+
+          <!-- Github -->
+          <a href="https://github.com/boptom/alpinejs-number">
+            <svg aria-hidden="true" class="size-7" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path></svg>
+          </a>
+        </div>
+
+        <h1 class="font-bold mb-2">Alpine JS Number Plugin</h1>
+        <p class="mb-10 border-l-4 pl-2">Enhanced Numeric Input for <a href="https://alpinejs.dev/" class="underline">Alpine.js</a>: Simplifying Number Formatting and Currency Handling.</p>
+
+      <div x-data class="flex flex-col space-y-16">
+        <!-- Installation -->
+        <div>
+          <h2 class="font-semibold mb-2">Installation</h2>
+          <p class="text-gray-600">With a CDN</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6 overflow-scroll">
+            <pre class="max-w-12">
+ &lt;script
+   defer
+   src=&quot;https://unpkg.com/alpinejs-number@latest/dist/number.min.js&quot;
+ &gt;&lt;/script&gt;
+
+ &lt;script
+   defer 
+   src=&quot;https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js&quot;&gt;
+ &lt;/script&gt;</pre>
+          </div>
+
+          <p class="text-gray-600 mt-10">With a Package Manager</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6 overflow-scroll">
+            <pre class="max-w-12">
+ yarn add -D alpinejs-manage
+
+ npm install -D alpinejs-manage</pre>
+          </div>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6 overflow-scroll">
+            <pre class="max-w-12">
+ import Alpine from 'alpinejs'
+ import manage from 'alpinejs-number'
+
+ Alpine.plugin(number)
+
+ Alpine.start()</pre>
+          </div>
+        </div>
+
+        <!-- Basic Usage -->
+        <div>
+          <h2 class="font-semibold mb-2">Basic Usage</h2>
+          <p class="text-gray-600">Use <span class="bg-gray-100">x-number</span> directive on an input to auto format the number.</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;input <span class="font-bold text-red-500">x-number</span> <span class="hidden md:inline">class=&quot;border rounded px-2 py-1&quot;</span> <span class="hidden sm:inline">value=&quot;1000.99&quot;</span> /&gt;
+          </div>
+
+          <label for="basic" class="mr-2">Amount:</label>
+          <input x-number class="border rounded px-2 py-1 text-right w-32" value="1000.99" id="basic" />
+        </div>
+
+        <!-- Precision -->
+        <div>
+          <h2 class="font-semibold mb-2">Precision</h2>
+          <p class="text-gray-600">The default precision is 2 digits. Override this with a number modifier.</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;input x-number<span class="font-bold text-red-500">.4</span> <span class="hidden md:inline">class=&quot;border rounded px-2 py-1&quot;</span> <span class="hidden sm:inline">value=&quot;1000.99&quot;</span> /&gt;
+          </div>
+
+          <label for="prefix" class="mr-2">Amount:</label>
+          <input x-number.4 class="border rounded px-2 py-1 text-right w-32" value="1000.9999" id="prefix" />
+        </div>
+
+        <!-- Prefix -->
+        <div id="prefix">
+          <h2 class="font-semibold mb-2">Prefix</h2>
+          <p class="text-gray-600">The expression between quotes is the prefix.</p>
+          <p class="text-gray-600">Note: numbers, minus and decimal point cannot be used in the prefix.</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;input x-number=<span class="font-bold text-red-500">&quot;$&quot;</span> <span class="hidden md:inline">class=&quot;border rounded px-2 py-1&quot;</span> <span class="hidden sm:inline">value=&quot;1000.99&quot;</span> /&gt;
+          </div>
+
+          <label for="prefix-input" class="mr-2">Amount:</label>
+          <input x-number="$" class="border rounded px-2 py-1 text-right w-32" value="1000.99" id="prefix-input" />
+        </div>
+
+        <!-- Separators -->
+        <div>
+          <h2 class="font-semibold mb-2">Override Thousands Separator and Decimal Point</h2>
+          <p class="text-gray-600">
+            The thousands separator and the decimal point can be specified in the string between quotes.
+            Simply separate the strings with a vertical bar.
+            The first string is the <a href="#prefix" class="underline">prefix</a>, the second is the thousands separator, and the third is the
+            decimal point.
+          </p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;input x-number=&quot;€<span class="font-bold text-red-500">|.|,</span>&quot; <span class="hidden md:inline">class=&quot;border rounded px-2 py-1&quot;</span> <span class="hidden sm:inline">value=&quot;1000,99&quot;</span> /&gt;
+          </div>
+
+          <label for="separators" class="mr-2">Amount in Euros:</label>
+          <input x-number="€|.|," class="border rounded px-2 py-1 text-right w-32" value="1000,99" id="separators" />
+        </div>
+
+        <!-- Suffix -->
+        <div>
+          <h2 class="font-semibold mb-2">Suffix</h2>
+          <p class="text-gray-600">
+            A suffix can be specified within the quotes too. It is the fouth string in the list.
+          </p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;input x-number.0=&quot;|,|.|<span class="font-bold text-red-500">¢</span>&quot; <span class="hidden md:inline">class=&quot;border rounded px-2 py-1&quot;</span> <span class="hidden sm:inline">value=&quot;99&quot;</span> /&gt;
+          </div>
+
+          <label for="separators" class="mr-2">Cents:</label>
+          <input x-number.0="|,|.|¢" class="border rounded px-2 py-1 text-right w-32" value="99" id="separators" />
+        </div>
+
+        <!-- Alternate Suffix -->
+        <div>
+          <p class="text-gray-600">A suffix can also be added with a string after a colon.</p>
+          <p class="text-gray-600">Note: special characters and uppercase characters cannot be used here.</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;input x-number:<span class="font-bold text-red-500">x</span> <span class="hidden md:inline">class=&quot;border rounded px-2 py-1&quot;</span> <span class="hidden sm:inline">value=&quot;1.5&quot;</span> /&gt;
+          </div>
+
+          <label for="alternate-suffix" class="mr-2">Multiplier:</label>
+          <input x-number:x class="border rounded px-2 py-1 text-right w-32" value="1.5" id="alternate-suffix" />
+        </div>
+
+        <!-- Unsigned -->
+        <div>
+          <h2 class="font-semibold mb-2">Unsigned</h2>
+          <p class="text-gray-600">Use the unsigned modifier to disable negative numbers.</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;input x-number<span class="font-bold text-red-500">.unsigned</span> <span class="hidden md:inline">class=&quot;border rounded px-2 py-1&quot;</span> <span class="hidden sm:inline">value=&quot;1000.99&quot;</span> /&gt;
+          </div>
+
+          <p class="text-gray-600 mb-2">Try typing a negative number into this box.</p>
+          <label for="unsigned" class="mr-2">Amount:</label>
+          <input x-number.unsigned class="border rounded px-2 py-1 text-right w-32" value="1000.9999" id="unsigned" />
+        </div>
+
+        <!-- Unsigned -->
+        <div>
+          <h2 class="font-semibold mb-2">To Number Magic</h2>
+          <p class="text-gray-600"><span class="bg-gray-100">$toNumber</span> magic can be used to convert a number string to a number.</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;div x-text=&quot;<span class="text-red-500">$toNumber('$1,234.99')</span>&quot;&gt;&lt;/div&gt;
+          </div>
+
+          <p class="text-gray-600 mb-2">Output:</p>
+          <div x-text="$toNumber('$1,234.99')" class="border rounded px-2 py-1 text-right w-32"></div>
+
+          <p class="text-gray-600 mt-10">A second argument can be used to pass the decimal character.</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;div x-text=&quot;$toNumber('€1.234,99', <span class="text-red-500">','</span>)&quot;&gt;&lt;/div&gt;
+          </div>
+
+          <p class="text-gray-600 mb-2">Output:</p>
+          <div x-text="$toNumber('€1.234,99', ',')" class="border rounded px-2 py-1 text-right w-32"></div>
+        </div>
+    </div>
+  </body>
 </html>
