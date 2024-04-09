@@ -1,6 +1,6 @@
 {
   "name": "alpinejs-number",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Enhanced Numeric Input for Alpine.js: Simplifying Number Formatting and Currency Handling.",
   "homepage": "https://boptom.github.io/alpinejs-number",
   "keywords": [
