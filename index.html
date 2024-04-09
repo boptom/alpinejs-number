@@ -86,10 +86,10 @@
         <!-- Precision -->
         <div>
           <h2 class="font-semibold mb-2">Precision</h2>
-          <p class="text-gray-600">The default precision is 2 digits. Override this with a number modifier.</p>
+          <p class="text-gray-600">Precision can be set with a with a number modifier.</p>
 
           <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
-            &lt;input x-number<span class="font-bold text-red-500">.4</span> <span class="hidden md:inline">class=&quot;border rounded px-2 py-1&quot;</span> <span class="hidden sm:inline">value=&quot;1000.99&quot;</span> /&gt;
+            &lt;input x-number<span class="font-bold text-red-500">.4</span> <span class="hidden md:inline">class=&quot;border rounded px-2 py-1&quot;</span> <span class="hidden sm:inline">value=&quot;1000.9999&quot;</span> /&gt;
           </div>
 
           <label for="prefix" class="mr-2">Amount:</label>
@@ -132,7 +132,7 @@
         <div>
           <h2 class="font-semibold mb-2">Suffix</h2>
           <p class="text-gray-600">
-            A suffix can be specified within the quotes too. It is the fouth string in the list.
+            A suffix can be specified within the quotes too. It is the fourth string in the list.
           </p>
 
           <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
@@ -170,7 +170,7 @@
           <input x-number.unsigned class="border rounded px-2 py-1 text-right w-32" value="1000.9999" id="unsigned" />
         </div>
 
-        <!-- Unsigned -->
+        <!-- toNumber -->
         <div>
           <h2 class="font-semibold mb-2">To Number Magic</h2>
           <p class="text-gray-600"><span class="bg-gray-100">$toNumber</span> magic can be used to convert a number string to a number.</p>
@@ -190,6 +190,78 @@
 
           <p class="text-gray-600 mb-2">Output:</p>
           <div x-text="$toNumber('€1.234,99', ',')" class="border rounded px-2 py-1 text-right w-32"></div>
+        </div>
+
+        <!-- toFormatted -->
+        <div>
+          <h2 class="font-semibold mb-2">To Formatted Magic</h2>
+          <p class="text-gray-600"><span class="bg-gray-100">$toFormatted</span> magic can be used to convert a number to a formatted number string.</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;div x-text=&quot;<span class="text-red-500">$toFormatted('1234000.99')</span>&quot;&gt;&lt;/div&gt;
+          </div>
+
+          <p class="text-gray-600 mb-2">Output:</p>
+          <div x-text="$toFormatted('$1234000.99')" class="border rounded px-2 py-1 text-right w-32"></div>
+
+          <p class="text-gray-600 mt-10">
+            The prefix, thousands separator, decimal character, precision and suffix
+            can be passed as arguments to the function.
+          </p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6">
+            &lt;div x-text=&quot;$toFormatted('1234.9999', <span class="text-red-500">'$', ',', '.', ' USD', 2</span>)&quot;&gt;&lt;/div&gt;
+          </div>
+
+          <p class="text-gray-600 mb-2">Output:</p>
+          <div x-text="$toFormatted('1234.999', '$', ',', '.', ' USD', 2)" class="border rounded px-2 py-1 text-right w-32"></div>
+        </div>
+
+        <div>
+          <h2 class="font-semibold mb-2">Form Example</h2>
+          <p class="text-gray-600">Alpine JS along with the magics can be utilized to transform inputs to numbers before submitting a form.</p>
+
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6 overflow-scroll">
+            <pre class="max-w-12">
+&lt;div x-data=&quot;{ amount: '10000', formData: {} }&quot; class=&quot;space-y-4&quot;&gt;
+
+  &lt;form <span class="text-red-500">@submit.prevent=&quot;formData = { amount: $toNumber(amount) }&quot;</span>&gt;
+    &lt;label for=&quot;form-example&quot; class=&quot;mr-2&quot;&gt;Amount:&lt;/label&gt;
+    &lt;input
+      x-number.unsigned=&quot;$&quot;
+      id=&quot;form-example&quot;
+      class=&quot;border rounded px-2 py-1 text-right w-32&quot;
+      x-model=&quot;amount&quot;
+      required
+    /&gt;
+    &lt;button type=&quot;submit&quot; class=&quot;border rounded px-2 py-1&quot;&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+
+  &lt;pre
+    x-text=&quot;JSON.stringify(formData)&quot;
+    class=&quot;bg-gray-100 p-4 rounded-lg&quot;
+  &gt;&lt;/pre&gt;
+
+&lt;/div&gt;</pre>
+          </div>
+
+          <div x-data="{ amount: '10000', formData: {} }" class="space-y-4">
+            <form @submit.prevent="formData = { amount: $toNumber(amount) }">
+              <label for="form-example" class="mr-2">Amount:</label>
+              <input
+                x-number.unsigned="$"
+                id="form-example"
+                class="border rounded px-2 py-1 text-right w-32"
+                x-model="amount"
+                required
+              />
+              <button type="submit" class="border rounded px-2 py-1">Submit</button>
+            </form>
+            <pre
+              x-text="JSON.stringify(formData)"
+              class="bg-gray-100 p-4 rounded-lg"
+            ></pre>
+          </div>
         </div>
     </div>
   </body>

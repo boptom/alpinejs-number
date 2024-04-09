@@ -18,7 +18,7 @@ export default function (Alpine) {
 
       /** @type {number} */
       const precision = parseInt(
-        modifiers.find((m) => !isNaN(parseInt(m))) ?? 2,
+        modifiers.find((m) => !isNaN(parseInt(m))) ?? -1,
       );
 
       /** @type {boolean} */
@@ -171,7 +171,7 @@ export default function (Alpine) {
   );
 
   // Returns a number from a number string
-  Alpine.magic("toNumber", () => (value, decimalChar = ".", precision = 2) => {
+  Alpine.magic("toNumber", () => (value, decimalChar = ".", precision = -1) => {
     return Number(
       toNumber(value, 0, false, {
         decimalChar,
@@ -180,6 +180,30 @@ export default function (Alpine) {
       }).value.replace(decimalChar, "."),
     );
   });
+
+  // Returns a formatted number from a number
+  Alpine.magic(
+    "toFormatted",
+    () =>
+      (
+        value,
+        prefix = "",
+        separator = ",",
+        decimalChar = ".",
+        suffix = "",
+        precision = -1,
+        unsigned = false,
+      ) => {
+        return modify(value, 0, false, {
+          prefix,
+          suffix,
+          separator,
+          decimalChar,
+          precision,
+          unsigned,
+        }).value;
+      },
+  );
 
   /**
    * Returns a number string from an input string, as well as the cursor position.
@@ -202,14 +226,14 @@ export default function (Alpine) {
       ? cursorPosition - 1
       : value.indexOf(decimalChar);
 
-    // Add extraneous decimal points to the positions to remove
-    if (precision > 0 && decimalPosition !== -1) {
+    // Remove decimal point from the positionsToRemove array
+    if ((precision > 0 || precision === -1) && decimalPosition !== -1) {
       positionsToRemove = positionsToRemove.filter(
         (pos) => decimalPosition !== pos,
       );
     }
 
-    // Add extraneous numbers after the decimal point to the positions to remove
+    // Remove extraneous numbers after the decimal point to the positions to remove
     if (precision > 0 && decimalPosition !== -1) {
       let decimalCount = 0;
 
