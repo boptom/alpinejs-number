@@ -229,7 +229,7 @@
 
           <div class="font-mono rounded-lg p-3 bg-gray-100 my-6 overflow-scroll">
             <pre class="max-w-12">
-&lt;div x-data=&quot;{ amount: '10000', formData: {} }&quot; class=&quot;space-y-4&quot;&gt;
+&lt;div x-data=&quot;{ amount: 10000, formData: {} }&quot; class=&quot;space-y-4&quot;&gt;
 
   &lt;form <span class="text-red-500">@submit.prevent=&quot;formData = { amount: $toNumber(amount) }&quot;</span>&gt;
     &lt;label for=&quot;form-example&quot; class=&quot;mr-2&quot;&gt;Amount:&lt;/label&gt;
@@ -251,7 +251,7 @@
 &lt;/div&gt;</pre>
           </div>
 
-          <div x-data="{ amount: '10000', formData: {} }" class="space-y-4">
+          <div x-data="{ amount: 10000, formData: {} }" class="space-y-4">
             <form @submit.prevent="formData = { amount: $toNumber(amount) }">
               <label for="form-example" class="mr-2">Amount:</label>
               <input

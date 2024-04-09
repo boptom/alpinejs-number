@@ -117,7 +117,7 @@ The prefix, thousands separator, decimal character, precision and suffix can be 
 Alpine JS along with the magics can be utilized to transform inputs to numbers before submitting a form.
 
 ```js
-<div x-data="{ amount: '10000', formData: {} }" class="space-y-4">
+<div x-data="{ amount: 10000, formData: {} }" class="space-y-4">
   <form @submit.prevent="formData = { amount: $toNumber(amount) }">
     <label for="form-example" class="mr-2">Amount:</label>
     <input

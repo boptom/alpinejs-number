@@ -173,7 +173,7 @@ export default function (Alpine) {
   // Returns a number from a number string
   Alpine.magic("toNumber", () => (value, decimalChar = ".", precision = -1) => {
     return Number(
-      toNumber(value, 0, false, {
+      toNumber(String(value), 0, false, {
         decimalChar,
         precision,
         unsigned: false,
