@@ -1,6 +1,6 @@
 # Alpine JS Number
 
-An Alpine JS plugin/directive to format numbers in input fields.
+Enhanced Numeric Input for Alpine.js: Simplifying Number Formatting and Currency Handling.
 
 ## Install
 
@@ -9,7 +9,7 @@ An Alpine JS plugin/directive to format numbers in input fields.
 ```html
 <script
   defer
-  src="https://unpkg.com/PLUGIN@latest/dist/alpinejs-number.min.js"
+  src="https://unpkg.com/alpinejs-number@latest/dist/number.min.js"
 ></script>
 
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
