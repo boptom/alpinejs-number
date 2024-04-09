@@ -2,11 +2,14 @@
   "name": "alpinejs-number",
   "version": "1.0.0",
   "description": "Enhanced Numeric Input for Alpine.js: Simplifying Number Formatting and Currency Handling.",
+  "homepage": "https://boptom.github.io/alpinejs-number",
   "keywords": [
     "Alpine",
     "Alpine JS",
     "Alpine JS Plugin",
-    "Alpine JS Plugins"
+    "Alpine JS Plugins",
+    "Currency Input",
+    "Number Input"
   ],
   "module": "dist/number.esm.js",
   "unpkg": "dist/number.min.js",
