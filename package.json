@@ -1,7 +1,7 @@
 {
   "name": "alpinejs-number",
   "version": "1.0.0",
-  "description": "A better number input for Alpine JS",
+  "description": "Enhanced Numeric Input for Alpine.js: Simplifying Number Formatting and Currency Handling.",
   "keywords": [
     "Alpine",
     "Alpine JS",
