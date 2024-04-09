@@ -2,6 +2,8 @@
 
 Enhanced Numeric Input for Alpine.js: Simplifying Number Formatting and Currency Handling.
 
+[Documentation](https://boptom.github.io/alpinejs-number)
+
 ## Install
 
 ### With a CDN
