@@ -82,6 +82,7 @@ export default function (Alpine) {
         if (el.value.startsWith(prefix + "-")) {
           el.value = el.value.replace("-", "");
           el.setSelectionRange(selectionStart - 1, selectionStart - 1);
+          el.dispatchEvent(new Event("input", { bubbles: true }));
           e.preventDefault();
           return;
         }
@@ -89,6 +90,7 @@ export default function (Alpine) {
         // Prepend -
         el.value = el.value.replace(prefix, prefix + "-");
         el.setSelectionRange(selectionStart + 1, selectionStart + 1);
+        el.dispatchEvent(new Event("input", { bubbles: true }));
         e.preventDefault();
       };
 
