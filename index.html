@@ -227,14 +227,14 @@
           <h2 class="font-semibold mb-2">Form Example</h2>
           <p class="text-gray-600">Alpine JS along with the magics can be utilized to transform inputs to numbers before submitting a form.</p>
 
-          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6 overflow-scroll">
+          <div class="font-mono rounded-lg p-3 bg-gray-100 my-6 overflow-auto">
             <pre class="max-w-12">
 &lt;div x-data=&quot;{ amount: 10000, formData: {} }&quot; class=&quot;space-y-4&quot;&gt;
 
   &lt;form <span class="text-red-500">@submit.prevent=&quot;formData = { amount: $toNumber(amount) }&quot;</span>&gt;
     &lt;label for=&quot;form-example&quot; class=&quot;mr-2&quot;&gt;Amount:&lt;/label&gt;
     &lt;input
-      x-number.unsigned=&quot;$&quot;
+      x-number=&quot;$&quot;
       id=&quot;form-example&quot;
       class=&quot;border rounded px-2 py-1 text-right w-32&quot;
       x-model=&quot;amount&quot;
@@ -255,7 +255,7 @@
             <form @submit.prevent="formData = { amount: $toNumber(amount) }">
               <label for="form-example" class="mr-2">Amount:</label>
               <input
-                x-number.unsigned="$"
+                x-number="$"
                 id="form-example"
                 class="border rounded px-2 py-1 text-right w-32"
                 x-model="amount"
