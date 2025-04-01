@@ -156,10 +156,12 @@ export default function (Alpine) {
           params,
         );
 
-        event.target.value = value;
-        event.target.setSelectionRange(cursorPosition, cursorPosition);
+        if (event.target.value !== value) {
+          event.target.value = value;
+          el.dispatchEvent(new Event("input", { bubbles: true }));
+        }
 
-        el.dispatchEvent(new Event("input", { bubbles: true }));
+        event.target.setSelectionRange(cursorPosition, cursorPosition);
       }
 
       cleanup(() => {
