@@ -200,7 +200,7 @@ export default function (Alpine) {
         precision = -1,
         unsigned = false,
       ) => {
-        return modify(value, 0, false, {
+        return modify(String(value), 0, false, {
           prefix,
           suffix,
           separator,
