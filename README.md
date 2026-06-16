@@ -46,7 +46,7 @@ Use x-number directive on an input to auto format the number.
 
 ### Precision
 
-Precision can be set with a with a number modifier.
+Precision can be set with a number modifier.
 
 ```js
 <input x-number.4 value="1000.9999" />
